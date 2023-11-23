@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/your-username/your-spring-boot-app.git'
+            }
+        }
+
+        stage('Build and Test') {
+            steps {
+                script {
+                    // You can add other build steps here
+                    sh 'mvn clean package'
+                    // Execute automated tests
+                    sh 'mvn test'
+                }
+            }
+        }
+    }
+}
